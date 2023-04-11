@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Log In{% endblock %}
+
+{% block contenido %}
+<br>
+<br>
+<br>
+<br>
+<div class="center">
+    <h1>Login</h1>
+    <form method = "post">
+        <div class = "txt_field">
+            <input type="text" id="email" name="email"/>
+            <span></span>
+            <label for="email">Email Address</label>
+        </div>
+        <div class = "txt_field">
+            <input type="text" id="password" name="password"/>
+            <span></span>
+            <label for="password">Password</label>
+        </div>
+
+        <div class="signup_link">
+            Not a member? <a href="/sign-up">Sign up</a>
+
+        </div>
+    <button type ="submit" class="pass">Submit</button>
+</form>
+</div>
+
+<br>
+<br>
+<br>
+
+{% endblock %}
+

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %} My activities{% endblock %} 
+{% block contenido %}
+
+<br>
+<br>
+<br>
+<br>
+<h1>Hello, {{user.first_name}} </h1>
+{%if user.role == 1%}
+<form method = post>
+  <h3 align = "center">Create an activity</h3>
+  <div class = "form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter the name of the activity"/>
+  </div>
+  <div class = "form-group">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" id="location" name="location" placeholder="Where should it be located?"/>
+  </div>
+  <div class = "form-group">
+      <label for="seats">Seats</label>
+      <input type="number" class = "form-control" id="seats" name="seats" min="0" max="100" placeholder="Select a number of atendees"/>
+    </div>
+  <div class = "form-group">
+      <label for="price">Price</label>
+      <input type="number" class="form-control" id="price" name="price" min="1" max="200" placeholder="Select a price"/>
+  </div>
+  <div class = "form-group">
+    <label for="date">Date and Time</label>
+    <input type="datetime-local" value="2022-12-15T00:00:00" class="form-control" id="date" name="date" min="2022-12-22" max="2030-12-22" placeholder="Select the date"/>
+  </div>
+
+  <div class = "form-group">
+    <label for="featured">Do you want this activity to be featured?</label><br>
+    <input type="radio" id="option1" name="options" value = "yes"><label for="Yes"> &nbsp;Yes</label>
+    <input type="radio" id="option2" name="options" value = "no"><label for="No"> &nbsp;No</label>
+  </div>
+
+  </form>
+  <button type = "Register" class="btn btn-primary">Submit</button>
+</form>
+{%endif%}
+
+<br>
+<br>
+<br>
+<br>
+<h2>My reserved activities</h2>
+<br>
+
+{%for i in activities%} 
+
+<div class="container">
+    <div class="activity_card">
+      <h2>{{i[0].name}}</h2>
+      <u>{{i[0].location}}</u>
+      <p>{{i[0].date}} </p>
+      <div class="pic"></div>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      
+      <button>
+      </button>
+    </div>
+{%endfor%}
+
+{%if not activities%}
+<h4>No activities reserved</h4>
+<h5>See all our activities and reserve <a href="/activity">here</a></h5>
+{%endif%}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+{% endblock %}

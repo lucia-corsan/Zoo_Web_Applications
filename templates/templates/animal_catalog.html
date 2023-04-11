@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} Catálogo de animales{% endblock %} 
+
+{%block contenido%}
+<br>
+<br>
+<br>
+<br>
+<body>
+    <h1>Our Catalogue</h1>
+    <div class="container_animal">
+        {% for i in animal %}
+            <div class="card" style="--i:url(../static/Pics/{{i.id}}.jpg)">
+                <div class="content">
+                    <h2>{{i.name}}</h2>
+                    <a href="/animal/{{i.id}}">Learn more</a>
+                </div>
+            </div>
+        
+        {%endfor%} 
+    </div> 
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+{% endblock %}
+
+
+

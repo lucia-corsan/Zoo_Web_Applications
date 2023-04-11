@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Reserve {% endblock %} 
+{% block contenido %}
+<br>
+<br>
+<br>
+<br>
+<h1>Reserving {{activity.name}}</h1>
+{%if activity.aforo == 0  %} 
+<h1 style="color:red">We are sorry, there are not vacant places!</h1>
+
+{%else%} 
+<form method = post>
+    <div class = "form-group">
+        <lable for="email">Number of tickets</lable>
+        <input type="number" class="form-control" id="n_tickets" name="n_tickets" placeholder="Number of tickets" min ="1" max="{{activity.aforo}}"/>
+    </div>
+    <br/>
+    <button type = "Register" class="btn btn-primary">Reserve</button>
+</form>
+{%endif%}
+
+
+{% endblock %}

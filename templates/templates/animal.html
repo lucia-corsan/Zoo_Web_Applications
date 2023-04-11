@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} Nuestros animales{% endblock %} 
+{% block contenido %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2>This animal is a {{animal.name}}</h2>
+<br>
+<br>
+<h3>Its scientific name is {{animal.sci_name}}</h3>
+<br>
+<h4>More information about this animal here:</h4>
+<h5> {{animal.info}}</h5>
+<br>
+<br>
+
+<h3>If you want to support an {{animal.name}} , click <a href="/diploma/{{animal.id}}">here</a></h3>
+
+{% endblock %}

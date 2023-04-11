@@ -1,0 +1,113 @@
+<!--Aqui va a ir toda la estetica de html que es la base-->
+<!--Tendra que ser modificada y mejorada con el tiempo obviamente-->
+<!--esto es solo la base, partes mas especificas con otros diseños seran overriden-->
+<!--MIRARTE UN TUTORIAL BUENO DE ESTO-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Defining which character set is useful for this document-->
+        <meta charset = "utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+        <!--PODEMOS CAMBIARALAS POR OTRAS STYLESHEETS DE CSS SI QUEREMOS-->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            crossorigin="anonymous"
+        />
+
+        <link rel="stylesheet" href="../static/style.css"/>
+
+        <!--Written in Jinja the childs templates will inherit this blocks-->
+        <title>{% block title %}Home{% endblock %}</title>
+    </head>
+    <body>
+        <!--Crea una barra superior -->
+        <header id ="header">
+            <a href="/" class="logo">Zoo de Torremocha</a>
+            <ul>
+                {% if user.is_authenticated%}
+                <li><a id = "home" href="/" class="active">Home</a></li>
+                <li><a id="logout" href ="/logout">Logout</a></li>
+                <li><a class = "nav-item nav-link" id="animal_catalog" href="/animal_catalog">Animal Catalogue</a></li>
+                <li><a class = "nav-item nav-link" id="perfil" href="/customer_profile">Profile</a></li>               
+                <li><a href="/contact">Contact</a></li>
+                {% else %}
+                <li><a id = "home" href="/" class="active">Home</a></li>
+                <li><a class = "nav-item nav-link" id="signUp" href ="/sign-up">Sign Up</a></li>
+                <li><a class = "nav-item nav-link" id="login" href ="/login">Login</a></li>
+                <li><a class = "nav-item nav-link" id="animal_catalog" href="/animal_catalog">Animal Catalogue</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% endif %}
+            </ul>
+        </header>
+        <!--This displays all the messages we get with their categories-->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {%if messages%}
+            {%for category, message in messages %}
+            {% if category == 'error' %}
+            <!--This alert is dismissable and will fade if chosen to-->
+            <div class="alert alert-danger alert-dismissable fade show" role = "alert">
+                {{ message }}
+                <!--Button to dismiss the error alerts-->
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% else %}
+            <div class="alert alert-success alert-dismissable fade show" role = "alert">
+                {{ message }}
+                <!--Button to dismiss the error alerts-->
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}            
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <!--Showing this information to the user-->
+        <div class = "container">
+            <!--Recuerda meter aqui los bloques necesarios-->
+           {% block contenido%}
+           {% endblock %}  
+        </div>
+
+        <!--Some preloaded scripts of java script with some fancy animations etc.-->
+        <!--THIS SHOULD BE AT THE BOTTOM-->
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
+        <!--NUESTRO JAVASCRIPT VA ACÁ-->
+        <script
+            type="text/javascript"
+            src="{{ url_for('static', filename='index.js') }}"
+        ></script>        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+    </body>
+</html>

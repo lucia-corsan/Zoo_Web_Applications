@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %} Actividad específica{% endblock %} 
+
+
+{% block contenido %}
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h1>Activities</h1>
+
+
+	{%for i in activity%}	
+	
+	<div class="container">
+		<div class="activity_card">
+		  <h2>{{i.name}}</h2>
+		  {%if user.role == True%}
+		  <a href = "/edit/{{i.id}}">
+			<i class="fa fa-pencil" aria-hidden="true"></i>
+		  </a>
+		  {%endif%}  
+
+		  <a href="/reserve/{{i.id}}">	  
+			<i class="fa fa-arrow-right" aria-hidden="true"></i>
+		  </a>
+		  <u>{{i.location}}</u>
+		  <p>{{i.date}} </p>
+		  <div class="pic"></div>
+		  <ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		  </ul>
+
+		  <button>
+		  </button>
+		</div>
+	</div>
+
+
+	
+	{%endfor%} 	
+</body>
+{%endblock%}
